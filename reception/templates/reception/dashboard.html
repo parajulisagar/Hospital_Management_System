@@ -1,0 +1,114 @@
+{% extends 'reception/base.html'%}
+{% block content %}
+{% load mathfilters %}
+<h2>Total Appointments: {{total}}</h2>
+<h2>Total Appointments completed: {{completed}}</h2>
+<h2>Total Appointments pending: {{pending}}</h2>
+<br>
+<br>
+
+<legend class="border-bottom mb-4">
+    Appointments: 
+</legend>
+<div class="row">
+    <div class="col">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Patient</th>
+                    <th>Doctor</th>
+                    <th>Status</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for appointment in allapps %}
+                <tr>
+                    <td>{{appointment.date}}</td>
+                    <td>{{appointment.time}}</td>
+                    <td>{{appointment.pat}}</td>
+                    <td>{{appointment.doc}}</td>
+                    <td>{{appointment.status}}</td>
+                    <td>
+                        <form method='POST' action="{% url 'upd-app'%}">
+                            <input type="text" id="pk" name="pk" value="{{appointment.id}}" hidden>
+                            <button class="btn btn-primary" type="submit">
+                                Update
+                            </button>
+                        </form>
+                        </td>
+                        <td>
+                            <form method='POST' action="{% url 'del-app'%}">
+                            <input type="text" id="pk" name="pk" value="{{appointment.id}}" hidden>
+                            <button class="btn btn-danger" type="submit">
+                                Delete
+                            </button>
+                        </form>
+                        </td>
+                </tr>
+                {%endfor%} 
+            </tbody>
+        </table>
+        <a href="{% url 'add-app' %}">
+        <button class="btn btn-primary">
+            Add Appointment
+        </button>
+        </a>
+    </div>
+</div>
+<br>
+<br>
+<legend class="border-bottom mb-4">
+    Payments: 
+</legend>
+<div class="row">
+    <div class="col">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Patient</th>
+                    <th>Paid</th>
+                    <th>Due</th>
+                    <th>Total</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for account in allacc %}
+                <tr>
+                    <td>{{account.pat}}</td>
+                    <td style="color: green;">&#8377 {{account.paid}}</td>
+                    <td style="color: red;">&#8377 {{account.total|sub:account.paid}}</td>
+                    <td style="color: blue;">&#8377 {{account.total}}</td>
+                    <td>
+                        <form method='POST' action="{% url 'upd-acc'%}">
+                            <input type="text" id="pk" name="pk" value="{{account.id}}" hidden>
+                            <button class="btn btn-primary" type="submit">
+                                Update
+                            </button>
+                        </form>
+                        </td>
+                        <td>
+                            <form method='POST' action="{% url 'del-acc'%}">
+                            <input type="text" id="pk" name="pk" value="{{account.id}}" hidden>
+                            <button class="btn btn-danger" type="submit">
+                                Delete
+                            </button>
+                        </form>
+                        </td>
+                </tr>
+                {%endfor%} 
+            </tbody>
+        </table>
+        <a href="{% url 'add-acc' %}">
+        <button class="btn btn-primary" style="margin-bottom: 20px;">
+            Add Payment Info
+        </button>
+        </a>
+    </div>
+</div>
+{% endblock content %}

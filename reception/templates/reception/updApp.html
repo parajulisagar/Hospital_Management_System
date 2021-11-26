@@ -1,0 +1,28 @@
+{% extends 'reception/base.html'%}
+{% block content %}
+{% load crispy_forms_tags %}
+<div class="form-group" class="content-section">
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">
+                Update Appointment
+            </legend>
+            <label for="date">Date:</label>
+            <input type="text" class="form-control" id="date" name="date" value="{{appointment.date}}" disabled style="cursor: not-allowed;"> <br>
+            <label for="pat">Patient:</label>
+            <input type="text" class="form-control" id="pat" name="pat" value="{{appointment.pat}}" disabled style="cursor: not-allowed;"> <br>
+            <label for="doc">Doctor:</label>
+            <input type="text" class="form-control" id="doc" name="doc" value="{{appointment.doc}}" disabled style="cursor: not-allowed;"> <br>
+            <label for="status">Status:</label>
+            <select name="status" class="form-control" id="status">
+                <option value="PD">Pending</option>
+                <option value="CT">Completed</option>
+            </select>
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+{% endblock content %}

@@ -1,0 +1,24 @@
+{% extends 'doctor/base.html'%}
+{% block content %}
+<legend class="border-bottom mb-4">
+    Pending Appointments
+</legend>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Patient ID</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for appointment in allapp %}
+        <tr>
+            <td>{{appointment.date}}</th>
+            <td>{{appointment.time}}</th>
+            <td>{{appointment.pat}}</th>
+        </tr>
+        {%endfor%} 
+    </tbody>
+</table>
+{% endblock content %}

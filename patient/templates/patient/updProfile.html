@@ -1,0 +1,60 @@
+{% extends 'patient/base.html'%}
+{% block content %}
+<legend class="border-bottom mb-4">
+    Update Profile 
+ </legend>
+ For Patient ID: {{pat.pat_id}}
+ <br>
+ <br>
+ <br>
+ <form method="POST" action="{% url 'upd-prof'%}">
+     {% csrf_token %}
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="name" class="form-control" value="{{pat.user.first_name}} {{pat.user.last_name}}" id="name" disabled style="cursor: not-allowed;">
+    </div>
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" value="{{pat.user.email}}" id="email" disabled style="cursor: not-allowed;">
+    </div>
+    <div class="form-group">
+        <label for="username">Userame:</label>
+        <input type="name" class="form-control" value="{{pat.user.username}}" id="username" disabled style="cursor: not-allowed;">
+    </div>
+    <div class="form-group">
+        <label for="phn">Phone:</label>
+        <input type="tel" class="form-control" value="{{pat.Phone}}" id="phn" name="phn">
+    </div>
+    <div class="form-group">
+        <label for="gender">Gender:</label>
+        <Select id="gender" name="gender" value="{{pat.Gender}}">
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+            <option value="O">Other</option>
+        </Select>
+    </div>
+    <div class="form-group">
+        <label for="age">Age:</label>
+        <input type="number" class="form-control" value="{{pat.Age}}" id="age" name="age">
+    </div>
+    <div class="form-group">
+        <label for="address">Address:</label>
+        <input type="text" class="form-control" value="{{pat.Address}}" id="address" name="address">
+    </div>
+    <div class="form-group">
+        <label for="bg">Blood Group:</label>
+        <Select id="bg" name="bg" value="{{pat.Blood_Group}}">
+            <option value="A+">A+ Type</option>
+            <option value="A-">A- Type</option>
+            <option value="B+">B+ Type</option>
+            <option value="B-">B- Type</option>
+        </Select>
+    </div>
+    <button style="margin-bottom: 20px;" type="submit" class="btn btn-primary">Update</button>
+    
+  </form>
+  <a href="{% url 'patient-profile' %}">
+    <button class="btn btn-danger" style="margin-bottom: 20px;">Cancel</button>
+</a>
+
+ {% endblock content %}

@@ -1,0 +1,23 @@
+{% extends 'reception/base.html'%}
+{% block content %}
+{% load crispy_forms_tags %}
+<div class="form-group" class="content-section">
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">
+                Update Payment Status
+            </legend>
+            <label for="pat">Patient:</label>
+            <input type="text" class="form-control" id="pat" name="pat" value="{{account.pat}}" disabled style="cursor: not-allowed;"> <br>
+            <label for="paid">Paid:</label>
+            <input type="text" class="form-control" id="paid" name="paid" value="{{account.paid}}"> <br>
+            <label for="total">total:</label>
+            <input type="text" class="form-control" id="total" name="total" value="{{account.total}}"> <br>
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+{% endblock content %}

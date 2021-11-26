@@ -1,0 +1,33 @@
+{% extends 'patient/base.html'%}
+{% block content %}
+<legend class="border-bottom mb-4">
+    Profile
+ </legend>
+<div style="margin-top: 50px; margin-left: 50px; width: 400px;">
+    <strong style="padding-right: 50px;">Name: </strong>{{user_pat.user.first_name}}  {{user_pat.user.last_name}}<br>
+    <div style="align-self: center; background: gray; width: 100%; height: 2px; border-radius: 1px;"></div>
+    <strong style="padding-right: 50px;">Patient ID: </strong>{{user_pat.pat_id}}<br>
+    <div style="align-self: center; background: gray; width: 100%; height: 2px; border-radius: 1px;"></div>
+    <strong style="padding-right: 50px;">Email: </strong>{{user_pat.user.email}}<br>
+    <div style="align-self: center; background: gray; width: 100%; height: 2px; border-radius: 1px;"></div>
+    <strong style="padding-right: 50px;">Username: </strong>{{user_pat.user.username}}<br>
+    <div style="align-self: center; background: gray; width: 100%; height: 2px; border-radius: 1px;"></div>
+    <strong style="padding-right: 50px;">Phone no.: </strong>{{user_pat.Phone}}<br>
+    <div style="align-self: center; background: gray; width: 100%; height: 2px; border-radius: 1px;"></div>
+    <strong style="padding-right: 50px;">Gender: </strong>{{user_pat.Gender}}<br>
+    <div style="align-self: center; background: gray; width: 100%; height: 2px; border-radius: 1px;"></div>
+    <strong style="padding-right: 50px;">Age: </strong>{{user_pat.Age}}<br>
+    <div style="align-self: center; background: gray; width: 100%; height: 2px; border-radius: 1px;"></div>
+    <strong style="padding-right: 50px;">Address: </strong>{{user_pat.Address}}<br>
+    <div style="align-self: center; background: gray; width: 100%; height: 2px; border-radius: 1px;"></div>
+    <strong style="padding-right: 50px;">Blood Group: </strong>{{user_pat.Blood_Group}}<br>
+    <br>
+    <br>
+    <a href="{% url 'upd-prof' %}" style="float: inline-end;">
+        <div class="form-group">
+            <button class="btn btn-outline-info">Update Profile</button>
+        </div>
+    </a>
+</div>
+
+{% endblock content %}

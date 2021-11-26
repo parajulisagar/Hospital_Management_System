@@ -1,0 +1,33 @@
+{% extends 'doctor/base.html'%}
+{% block content %}
+<a style="float: right;" href="{% url 'create-pres' %}">
+    <button class="btn btn-primary">
+        Create New Prescription
+    </button>
+    </a>
+    <br>
+    <br>
+    <legend class="border-bottom mb-4">
+        Prescriptions: 
+    </legend>
+{% if total != 0 %}
+{% for pres in prescriptions %}
+<div class="card">
+    <div class="card-header">
+       <b>Date: </b>{{pres.date}} <br>
+       <b>Time: </b>{{pres.time}} <br>
+    </div>
+    <div class="card-body">
+        <b>Symptoms: </b>{{pres.symptoms}} <br>
+        <b>Prescription: </b>{{pres.prescription}}
+    </div>
+    <div class="card-footer">
+       <b>Patient ID: </b>{{pres.pat}}
+    </div>
+</div>
+<br>
+{% endfor %}
+{% else %}
+<h3 style="text-align: center;">No Prescriptions yet!</h3>
+{%endif%}
+{% endblock content %}
